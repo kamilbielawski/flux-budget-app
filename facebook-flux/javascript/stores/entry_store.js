@@ -31,7 +31,7 @@ function destroy(id) {
 var EntryStore = assign({}, EventEmitter.prototype, {
   getAll: function() {
     return _entries;
-  }
+  },
 
   emitChange: function() {
     this.emit(CHANGE_EVENT);

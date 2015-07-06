@@ -4,6 +4,8 @@
   "author": "Kamil Bielawski <k_bielawski@fastmail.fm>",
   "license": "MIT",
   "dependencies": {
+    "keymirror": "~0.1.0",
+    "object-assign": "^1.0.0",
     "flux": "^2.0.3",
     "react": "^0.13.0",
     "react-router": "^0.13.0"
