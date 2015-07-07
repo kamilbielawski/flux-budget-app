@@ -34,6 +34,7 @@ var BudgetApp = React.createClass({
         <div className="container">
           <Header />
           <MainSection entries={this.state.entries}/>
+          <CreateEntryForm />
         </div>
       </div>
     );
