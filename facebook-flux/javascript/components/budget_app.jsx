@@ -3,6 +3,7 @@
 var React = require('react');
 var Header = require('./header.jsx');
 var MainSection = require('./main_section.jsx');
+var CreateEntryForm = require('./create_entry_form.jsx');
 var EntryStore = require('../stores/entry_store');
 
 function getEntriesState() {
