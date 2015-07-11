@@ -9,12 +9,13 @@ var EntryRow = React.createClass({
   },
 
   render: function () {
+    var entry = this.props.entry;
     return (
       <tr>
-        <td>{this.props.entry.title}</td>
-        <td>{this.props.entry.amount}</td>
-        <td>{this.props.entry.category}</td>
-        <td>{this.props.entry.timestamp.toLocaleFormat()}</td>
+        <td>{entry.title}</td>
+        <td className={entry.amount > 0 ? 'success' : 'danger'}>{entry.amount.toFixed(2)}</td>
+        <td>{entry.category}</td>
+        <td>{entry.timestamp.toLocaleFormat()}</td>
         <td><a href="#" onClick={this._onRemoveClick}>REMOVE</a></td>
       </tr>
     );

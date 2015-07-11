@@ -2,18 +2,29 @@
 
 var React = require('react');
 var EntryActions = require('../actions/entry_actions');
+var TransactionTypeSelect = require('./transaction_type_select.jsx');
 
 var CreateEntryForm = React.createClass({
   _onAddClick: function(e) {
     e.preventDefault();
+    var transactionType = React.findDOMNode(this.refs.transactionType);
     var title = React.findDOMNode(this.refs.title);
     var amount = React.findDOMNode(this.refs.amount);
     var category = React.findDOMNode(this.refs.category);
+    var amountValue = parseFloat(amount.value);
+
+    if (transactionType.value == 'income') {
+      amountValue = Math.abs(amountValue);
+    } else {
+      amountValue = -Math.abs(amountValue);
+    }
+
     EntryActions.create(
       title.value,
-      parseFloat(amount.value),
+      amountValue,
       category.value
     );
+
     title.value = amount.value = category.value = "";
   },
 
@@ -22,6 +33,8 @@ var CreateEntryForm = React.createClass({
       <div className="row">
         <div className="col-md-12">
           <form className="form-inline">
+            <TransactionTypeSelect ref="transactionType" />
+
             <input type="text" className="form-control" ref="title" placeholder="title" />
 
             <div className="input-group">
