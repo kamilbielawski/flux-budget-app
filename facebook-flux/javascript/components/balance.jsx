@@ -10,7 +10,9 @@ var Balance = React.createClass({
 
     return (
       <div className="text-right">
-        <span style={{'font-size' : '1.6em'}} >TOTAL: ${total}</span>
+        <span style={{fontSize: '1.6em'}} >
+          TOTAL: <strong>${total.toFixed(2)}</strong>
+        </span>
       </div>
     );
   }

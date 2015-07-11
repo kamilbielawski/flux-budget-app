@@ -5,7 +5,8 @@ var EntryRow = require('./entry_row.jsx');
 
 var EntriesList = React.createClass({
   render: function () {
-    var entryNodes = Object.keys(this.props.entries).map(function(entryKey) {
+    var entriesToDisplay = Object.keys(this.props.entries);
+    var entryNodes = entriesToDisplay.map(function(entryKey) {
       var entry = this.props.entries[entryKey];
       return (
         <EntryRow entry={entry} key={"entry-"+entry.title+'-'+entry.timestamp}/>
