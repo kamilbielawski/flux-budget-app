@@ -5,3 +5,4 @@ bower_components
 *~
 
 facebook-flux/build/*.js
+reflux/build/*.js

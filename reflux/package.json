@@ -1,0 +1,14 @@
+{
+  "main": "javascript/main.js",
+  "scripts": {
+    "start": "../node_modules/watchify/bin/cmd.js . -o build/app.js -v -d"
+  },
+  "browserify": {
+    "transform": [
+      "reactify",
+      "envify"
+    ]
+  },
+  "dependencies": {}
+}
+
