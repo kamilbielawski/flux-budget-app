@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getEntries } from '../ducks/entries'
-import { getSelectedCategory } from '../ducks/categories'
+import { getSelectedCategory, getCategorysEntries } from '../ducks/categories'
 import CategoryPicker from './CategoryPicker'
 import EntriesList from './EntriesList'
 import Balance from './Balance'
@@ -17,6 +16,6 @@ export function MainSection({ entries, selectedCategory }) {
 }
 
 export default connect(state => ({
-  entries: getEntries(state),
+  entries: getCategorysEntries(state),
   selectedCategory: getSelectedCategory(state),
 }))(MainSection)

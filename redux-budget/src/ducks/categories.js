@@ -1,12 +1,12 @@
 import { getRoot } from './rootSelector'
 import { createSelector } from 'reselect'
-import { getEntriesByCategory } from './entries'
+import { getEntries, getEntriesByCategory } from './entries'
 
 // Actions
 export function selectCategory(category) {
   return {
     type: 'category/set',
-    payload: category,
+    payload: category
   }
 }
 
@@ -26,9 +26,17 @@ export const getCategories = createSelector(
   (entriesByCategory) => Object.keys(entriesByCategory)
 )
 
+export const getCategorysEntries = createSelector(
+  getEntriesByCategory,
+  getEntries,
+  getSelectedCategory,
+  (entriesByCategory, allEntries, category) =>
+    category === 'all' ? allEntries : entriesByCategory[category] || []
+)
+
 // Reducer
 const defaultState = {
-  selectedCategory: null,
+  selectedCategory: 'all',
 }
 
 export default function reducer(

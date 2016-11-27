@@ -1,7 +1,7 @@
 import React from 'react'
 import EntryRow from './EntryRow'
 
-export default function EntriesList({ entries, selectedCategory }) {
+export default function EntriesList({ entries }) {
   const entryNodes = entries.map((entry) => <EntryRow entry={ entry } key={ entry.id }/>)
 
   return <table className="table table-striped table-bordered">

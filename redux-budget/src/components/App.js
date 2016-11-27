@@ -1,22 +1,15 @@
 import React from 'react'
-import Header from './Header'
 import MainSection from './MainSection'
 import CreateEntryForm from './CreateEntryForm'
 
-export function App() {
-  const entries = []
-
+export default function App() {
   return (
     <div>
       <div className="container">
-        <Header />
+        <h1>Budget App</h1>
         <MainSection />
         <CreateEntryForm />
       </div>
     </div>
   )
 }
-
-export default App
-
-
