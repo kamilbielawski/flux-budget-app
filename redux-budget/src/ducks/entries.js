@@ -33,46 +33,36 @@ export function destroyEntry(id) {
 // Selectors
 export const getEntries = createSelector(
   getRoot,
-  ({ entries }) => entries
+  ({ entries }) =>  entries
 )
 
 export const getEntriesByCategory = createSelector(
   getEntries,
-  ({ entries }) => groupBy(entries, 'category')
+  (entries) => groupBy(entries, 'category')
 )
 
 // Reducer
-const defaultState = {
-  entries: [],
-}
-
 export default function reducer(
-  state = defaultState,
+  entries = [],
   { type, payload }
 ) {
-  const { entries } = state
-
   switch (type) {
     case 'entry/create':
       const { title, amount, category } = payload
-      return {
-        entries: [
-          ...entries,
-          { title, amount, category, id: v4() },
-        ]
-      }
+      return [
+        ...entries,
+        { title, amount, category, id: v4(), timestamp: (new Date()) },
+      ]
     case 'entry/update':
       const updatedIndex = findIndex(entries, { id: payload.id })
-      return {
-        entries: [
-          ...entries.slice(0, updatedIndex),
-          Object.assign({}, entries[updatedIndex], payload),
-          ...entries.slice(updatedIndex + 1),
-        ]
-      }
+      return [
+        ...entries.slice(0, updatedIndex),
+        Object.assign({}, entries[updatedIndex], payload.updates),
+        ...entries.slice(updatedIndex + 1),
+      ]
     case 'entry/destroy':
       return reject(entries, { id: payload.id })
     default:
-      return state
+      return entries
   }
 }
